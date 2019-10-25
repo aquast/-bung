@@ -1,4 +1,4 @@
-package übung;
+package de.qterra.uebung;
 
 public class Operatoren {
 
