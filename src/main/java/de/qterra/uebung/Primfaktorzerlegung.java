@@ -6,6 +6,8 @@ package de.qterra.uebung;
 import java.util.HashSet;
 import java.util.Iterator;
 
+import de.qterra.uebung.util.InputGetter;
+
 /**
  * @author aquast
  *
@@ -19,11 +21,13 @@ public class Primfaktorzerlegung {
 	public static void main(String[] args) {
 
 		int ganzzahl = 0;
-		if (args != null) {
+		if (args != null && args.length > 0) {
 			ganzzahl = Integer.parseInt(args[0]);
 			System.out.println("Ihre Eingabe war: " + ganzzahl);
 		} else {
 			System.out.println("Sie müssen eine Ganzzahl als Programmargument mitgeben");
+			ganzzahl = InputGetter.getInput();
+			System.out.println("starte Berechnung");			
 		}
         HashSet<Integer> faktoren = new HashSet<Integer>();
         faktoren = primFaktor(ganzzahl);
@@ -69,8 +73,8 @@ public class Primfaktorzerlegung {
 		HashSet<Integer> faktoren = new HashSet<Integer>(); 
 		int faktor = 0;
 		int primzahl = 2;
-		while (ganzzahl > 2) {
-			while (ganzzahl % primzahl != 0) {
+	    while (ganzzahl > 1) {
+			while (ganzzahl % primzahl != 0 && ganzzahl != primzahl) {
 				primzahl = findeNächsthöherePrim(primzahl +1);
 			}
 			faktor = primzahl;
